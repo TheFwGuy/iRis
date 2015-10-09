@@ -57,12 +57,15 @@ int main(void)
 
    init();		/* Initialize the system */
 
+#if defined LIGHT_SENSOR
 	init_tsl2561();
+#endif
 
 //   wakeup_tsl2561();
 
 	while(1)
 	{	
+#if defined LIGHT_SENSOR
       /*
        *  By default the light sensor is read. The encoder determine the position of the servo.
        *  Pushing the pushbutton changes the mode.
@@ -105,7 +108,31 @@ int main(void)
                EncCounter = PWMSTOP;
          }
       }
-
+#else
+      /*
+       *  The light sensor is not used. 
+       *  The encoder determine the position of the servo.
+       *  Pushing the pushbutton changes the end-to-end 
+       */
+      if(Pushbutton == ON)
+		{
+			switch(TogglePosition)
+			{
+				default:
+				case 0:
+			      EncCounter = PWMSTART;
+					TogglePosition = 1;
+					break;
+				 
+				 case 1:
+			      EncCounter = PWMSTOP;
+				   TogglePosition = 0;
+				   break;
+			}
+				
+	   	Pushbutton = OFF;
+		}
+#endif
 
 		TA0CCR1 = EncCounter;
 

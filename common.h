@@ -16,6 +16,17 @@
 extern unsigned char  Port1Shadow;
 extern unsigned char  TogglePosition; 
 
+/*
+ *  Behavior control
+ *
+ *  If defined LIGHT_SENSOR the light sensor control the motor - if not defined 
+ *  the pushbutton works to control the motor
+ */
+/* #define     LIGHT_SENSOR */
+
+/*
+ *  Generic defines
+ */
 #define		OFF				0
 #define 		ON 				1
 
