@@ -1,0 +1,40 @@
+Iris project
+
+April 2015
+
+This directory contains a code to handle the "eye simulator" Iris 
+(Independent Remote Illness Simulator).
+The purpose of the project is to build a pair of "electronic eyes" capable to
+simulate specific behavior associated to an illness, in order to train
+medical personnel.
+
+I/O assignments
+
+I/O	Function		Direction		Description
+--------------------------------------------------------------
+P1.0	I/O			Output			LED (debug/indicator)
+P1.1	I/O			Output			PWM for servomotor right
+P1.2	I/O			Output			PWM for servomotor left
+P1.3	I/O			Input				Encoder A
+P1.4	I/O			Input				Encoder B
+P1.5	I/O			Input				Encoder pushbutton
+P1.6	USI			Output			SCL I2C
+P1.7	USI			Input/Output	SDA I2C
+
+
+Use make to compile it. 
+
+make clean	-> clean project
+make		-> compile code
+
+To debug, use the mspdebug utility
+- sudo mspdebug rf2500
+
+When in the program, to load the program in the memory : prog iris.elf
+
+Ctrl-D to exit
+
+---------------------
+Assumptions
+
+- the servo motor needs to be drived with a 50Hz frequency (20 ms period)
