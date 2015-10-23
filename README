@@ -38,3 +38,9 @@ Ctrl-D to exit
 Assumptions
 
 - the servo motor needs to be drived with a 50Hz frequency (20 ms period)
+
+
+-------------------------
+To push the local git on github:
+
+git push -u origin master
