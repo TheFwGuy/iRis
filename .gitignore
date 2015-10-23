@@ -40,3 +40,11 @@ Thumbs.db
 #  Backup files #
 #################
 *.*~
+
+#  Local directories #
+######################
+DataSheets_specs
+Oled
+examples
+pictures
+
