@@ -31,7 +31,7 @@ uint16_t seqsl[] = TSL2561_SLEEP;
 /*
  * Private function prototypes
  */
-static int luxcalc(uint16_t, uint16_t);
+uint32_t luxcalc(uint16_t, uint16_t);
  
  
 /*
@@ -129,6 +129,7 @@ int read_tsl2561(unsigned char reading)
 {
    uint16_t ch0 = 0;
 	uint16_t ch1 = 0;
+   uint32_t luxres;
 
 #if defined(READWORD)	
    uint16_t seqread_CH0[] = TSL2561_READ16_CH0;
@@ -175,14 +176,15 @@ int read_tsl2561(unsigned char reading)
 	
    sleep_tsl2561();
 
-   return (ch0+ch1);
-//	return(luxcalc(ch0, ch1));
+   luxres = luxcalc(ch0, ch1);
+
+   return (luxres);
 }
 
 /*
  *  ------------------------------ Private functions -------------------------
  */
-static int luxcalc(uint16_t ch0, uint16_t ch1)
+uint32_t luxcalc(uint16_t ch0, uint16_t ch1)
 {
    unsigned long chScale;
    unsigned long channel1;
