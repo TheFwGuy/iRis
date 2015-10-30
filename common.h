@@ -22,7 +22,7 @@ extern unsigned char  TogglePosition;
  *  If defined LIGHT_SENSOR the light sensor control the motor - if not defined 
  *  the pushbutton works to control the motor
  */
-/* #define     LIGHT_SENSOR */
+#define     LIGHT_SENSOR
 
 /*
  *  Generic defines
